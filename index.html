@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مراقبة صحة المرضى</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <h1>مراقبة صحة المرضى</h1>
-    <div>
-        <h2>معدل ضربات القلب: <span id="heartRate"></span></h2>
-        <h2>مستوى الأكسجين: <span id="spo2"></span></h2>
-        <h2>الرطوبة: <span id="humidity"></span></h2>
-        <h2> درجة حرارة الغرفة: <span id="tempDHT"></span></h2>
-        <h2>درجة حرارة الجسم: <span id="tempDS"></span></h2>
+    <div class="container">
+        <h1>نظام مراقبة صحة المرضى</h1>
+        <div class="data-section">
+            <h2>معدل ضربات القلب: <span id="heartRate">--</span> bpm</h2>
+            <h2>مستوى الأكسجين: <span id="spo2">--</span> %</h2>
+            <h2>الرطوبة: <span id="humidity">--</span> %</h2>
+            <h2>درجة حرارة الغرفة: <span id="tempDHT">--</span> °C</h2>
+            <h2>درجة حرارة الجسم: <span id="tempDS">--</span> °C</h2>
+        </div>
     </div>
 
     <script>
