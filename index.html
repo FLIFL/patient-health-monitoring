@@ -1,0 +1,41 @@
+html
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مراقبة صحة المرضى</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>مراقبة صحة المرضى</h1>
+    <div>
+        <h2>معدل ضربات القلب: <span id="heartRate"></span></h2>
+        <h2>مستوى الأكسجين: <span id="spo2"></span></h2>
+        <h2>الرطوبة: <span id="humidity"></span></h2>
+        <h2>درجة حرارة DHT11: <span id="tempDHT"></span></h2>
+        <h2>درجة حرارة DS18B20: <span id="tempDS"></span></h2>
+    </div>
+
+    <script>
+        const channelID = "YOUR_CHANNEL_ID";  // استبدل بـ ID القناة الخاصة بك
+        const apiKey = "YOUR_API_KEY";          // استبدل بمفتاح API الخاص بك
+
+        function fetchData() {
+            const url = `https://api.thingspeak.com/channels/${channelID}/feeds.json?api_key=${apiKey}&results=1`;
+
+            $.getJSON(url, function(data) {
+                const latestEntry = data.feeds[0];
+                $('#heartRate').text(latestEntry.field1);
+                $('#spo2').text(latestEntry.field2);
+                $('#humidity').text(latestEntry.field3);
+                $('#tempDHT').text(latestEntry.field4);
+                $('#tempDS').text(latestEntry.field5);
+            });
+        }
+
+        setInterval(fetchData, 15000);
+        fetchData(); // أول استدعاء لجلب البيانات
+    </script>
+</body>
+</html>
